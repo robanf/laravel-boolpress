@@ -84,7 +84,7 @@ class PostController extends Controller
     {
         $data=$request->all();
         $post->update($data);
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.show', $post->slug);
     }
 
     /**
