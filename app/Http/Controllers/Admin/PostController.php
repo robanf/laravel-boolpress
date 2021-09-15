@@ -38,6 +38,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title'=>'required',
+            'slug'=>'required',
+        ]);
         $data=$request->all();
 
         $newPost=new Post();
@@ -81,7 +85,11 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
-    {
+    {   
+        $request->validate([
+            'title'=>'required',
+            'slug'=>'required',
+        ]);
         $data=$request->all();
         $post->update($data);
         return redirect()->route('admin.posts.show', $post->slug);
